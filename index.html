@@ -6,7 +6,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Joel Fullwood</title>
-	<link href='http://fonts.googleapis.com/css?family=Fauna+One|Gudea:400,700' rel='stylesheet' type='text/css'>
 	<style>
 		/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
@@ -391,9 +390,28 @@
 		/* Custom Styles */
 
 		html {
-			color: #A7ADC6;
-			background-color: #56667A;
+			--light: #f7f7f6;
+			--wow: #f16a53;
+			--dark: #30333a;
 			box-sizing: border-box;
+			height: 100%;
+			-ms-text-size-adjust: 100%;
+			-webkit-text-size-adjust: 100%;
+		}
+
+		*,
+		*:before,
+		*:after {
+			box-sizing: inherit;
+		}
+
+		body {
+			color: #f7f7f6;
+			color: var(--light);
+			background-color: #30333a;
+			background-color: var(--dark);
+			box-sizing: border-box;
+			height: 100%;
 			font-family:
 				-apple-system,
 				BlinkMacSystemFont,
@@ -405,10 +423,9 @@
 				"Segoe UI Emoji",
 				"Segoe UI Symbol";
 			-webkit-font-smoothing: antialiased;
-		}
-
-		html * {
-			box-sizing: border-box;
+			-moz-osx-font-smoothing: grayscale;
+			margin: 0;
+			padding: 0;
 		}
 
 		.main {
@@ -416,8 +433,8 @@
 			display: flex;
 			flex-direction: column;
 			flex-wrap: nowrap;
-			justify-content: center;
 			font-size: 2rem;
+			justify-content: center;
 		}
 
 		.container {
@@ -440,6 +457,7 @@
 
 		p {
 			margin: 0 0 1rem 0;
+			font-size: 1.5rem;
 		}
 
 		h1,
@@ -463,15 +481,14 @@
 
 		a {
 			text-decoration: none;
+			border-bottom-width: 5px;
+			border-bottom-style: solid;
+			border-bottom-color: transparent;
+			transition: border-bottom ease-in-out 142ms;
 		}
 
 		a:hover {
-			text-decoration: underline;
-			animation-duration: 2s;
-			animation-name: zazz;
-			animation-iteration-count: infinite;
-			animation-timing-function: ease;
-			animation-delay: 1200ms;
+			color: var(--wow);
 		}
 
 		ul,
@@ -481,30 +498,45 @@
 
 		@keyframes zazz {
 			0% {
-				color: white;
+				transform: rotate(0);
 			}
 
 			50% {
-				color: cadetblue;
+				transform: rotate(360deg);
 			}
 
-			100% {
-				color: white;
+			60% {
+				transform: rotate(0);
 			}
 		}
 
+		.name__link {
+			font-size: 2.95rem;
+			white-space: nowrap;
+		}
+
+		.name__link,
+		.name__link:hover {
+			color: var(--light);
+		}
+
 		.name__link:hover .name__character {
-			animation-duration: 2s;
+			animation-duration: 4s;
 			animation-name: zazz;
 			animation-iteration-count: infinite;
-			animation-timing-function: ease;
-			transition: all ease-in-out 5s;
+			animation-timing-function: ease-in-out;
+			animation-direction: alternate-reverse
+		}
+
+		.name__character {
+			display: inline-block;
+			transform-origin: 0% 100%;
 		}
 
 		.name__character:nth-child(2) {
 			animation-delay: 100ms;
 		}
-		
+
 		.name__character:nth-child(3) {
 			animation-delay: 200ms;
 		}
@@ -544,21 +576,48 @@
 		.name__character:nth-child(12) {
 			animation-delay: 1100ms;
 		}
+
+		@keyframes spin {
+			from {
+				transform: rotate(0);
+			}
+
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		.thumbs-up {
+			display: inline-block;
+			transform: rotate(0);
+			transform-origin: center center;
+		}
+
+		.thumbs-up:hover {
+			animation: spin 1s;
+		}
 	</style>
 </head>
+
 <body>
 	<main class="main">
 		<div class="container">
 			<h1 class="name" itemscope itemtype="http://schema.org/Person">
 				<a class="name__link" itemprop="url" href="http://joelfullwood.github.io">
 					<span itemprop="name">
-						<span class="name__character">J</span><span class="name__character">o</span><span class="name__character">e</span><span class="name__character">l</span> <span class="name__character">F</span><span class="name__character">u</span><span class="name__character">l</span><span class="name__character">l</span><span class="name__character">w</span><span class="name__character">o</span><span class="name__character">o</span><span class="name__character">d</span>
+						<span class="name__character">J</span><span class="name__character">o</span><span
+							class="name__character">e</span><span class="name__character">l</span> <span
+							class="name__character">F</span><span class="name__character">u</span><span
+							class="name__character">l</span><span class="name__character">l</span><span
+							class="name__character">w</span><span class="name__character">o</span><span
+							class="name__character">o</span><span class="name__character">d</span>
 					</span>
 				</a>
 			</h1>
-			<p class="title" itemprop="jobtitle">Front-end Web Developer</p>
-			<p>👍</p>
+			<p class="title" itemprop="jobTitle">Front-end Web Developer</p>
+			<p><span class="thumbs-up">👍</span></p>
 		</div>
 	</main>
 </body>
+
 </html>
